@@ -1,7 +1,7 @@
 provider "azurerm" {
   features {}
   # Uncomment the following if using explicit authentication
-   subscription_id = "51afcb8f-fcb4-4696-b4ee-068849799037"
+   subscription_id = "Value"
   # client_id       = var.client_object_id
   # client_secret   = var.client_secret
   # tenant_id       = var.tenant_id
