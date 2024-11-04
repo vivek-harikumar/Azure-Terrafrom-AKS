@@ -31,6 +31,7 @@ module "vnet" {
   public_ip           = module.jump_host_public_ip.public_ip_id
   public_subnet_prefix = var.public_subnet_prefix
   private_subnet_prefix = var.private_subnet_prefix
+  nat_gateway_id = module.nat_gateway.nat_gateway_id
 }
 
 # Module for NAT gateway public IP
@@ -67,21 +68,25 @@ module "cosmosdb" {
   cosmosdb_account_name = var.cosmosdb_account_name
   mongo_database_name  = var.mongo_database_name
   mongo_collection_name = var.mongo_collection_name
+  vnet_name = module.vnet.vnet_name
   location            = module.resource_group.location
   uniqueKey           = var.uniqueKey
   resource_group_name = module.resource_group.name
+  virtual_network_id = module.vnet.virtual_network_id
   private_subnet_id   = module.vnet.private_subnet_id
 }
 
 
 module "network_security_group" {
-  source = "./modules/ssh_nsg"
-
-  nsg_name            = "ssh_nsg"
+  source = "./modules/nsg"
   location            = module.resource_group.location
   resource_group_name = module.resource_group.name
-  network_interface_id = module.vnet.network_interface_id
+  public_subnet_id    = module.vnet.public_subnet_id
+  private_subnet_id   = module.vnet.private_subnet_id
+  public_subnet_prefix = var.public_subnet_prefix
+  private_subnet_prefix = var.private_subnet_prefix
 }
+
 
 module "jump_host" {
   source              = "./modules/jump_host"

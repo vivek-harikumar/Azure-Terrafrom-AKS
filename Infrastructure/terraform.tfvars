@@ -14,7 +14,6 @@ key_vault_name      = "pockeyvaulvivtulm41oct"
 secret_name         = "pockeysecrevivtulm41oct"
 cosmos_secret_name = "poccosmoskeysecrevivtulm41oct"
 acr_name            = "urlpocvivekacr"
-uniqueKey           = "Urolime123#"
 cosmosdb_account_name = "url-poc-vivek-cosmos-acc"
 mongo_database_name = "cosmosmongodb"
 mongo_collection_name = "cosmosmongodbcollection"
@@ -22,5 +21,4 @@ tenant_id = "Value"
 subscription_id = "Value"
 client_id = "Value"
 client_secret = "Value"
-
 
